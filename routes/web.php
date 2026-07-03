@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ShowCarController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MotorController;
+use App\Http\Controllers\SumController;
+
 
 Route::get('/', function () {
 
@@ -40,5 +46,25 @@ Route::get('sum/{num1}/{num2}', function(string $num1, string $num2){
     return $num1 + $num2;
 
 }) ->whereNumber("num1", "num2")
-
 ;
+
+Route::get('/car', [CarController::class, 'index']);
+
+Route::controller(CarController::class) ->group(function(){
+    Route::get('/car2', 'index2');
+     
+});
+
+Route::get('invoke', ShowCarController::class);
+
+// Route::resource('/products', ProductController::class);
+
+Route::apiResources([
+'motors' => MotorController::class,
+'products' => ProductController::class
+]);
+
+Route::controller(SumController::class) -> group(function(){
+    Route::get('/sumc/{num1}/{num2}', 'sum');
+    Route::get('/subsc/{num1}/{num2}', 'subs');
+});
