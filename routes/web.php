@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
 
 Route::get('/', function () {
 
@@ -40,5 +41,11 @@ Route::get('sum/{num1}/{num2}', function(string $num1, string $num2){
     return $num1 + $num2;
 
 }) ->whereNumber("num1", "num2")
-
 ;
+
+Route::get('/car', [CarController::class, 'index']);
+
+Route::controller(CarController::class) ->group(function(){
+    Route::get('/car2', 'index2');
+     
+});
