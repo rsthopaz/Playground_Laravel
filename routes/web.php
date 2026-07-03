@@ -12,8 +12,15 @@ Route::get('/about', function () {
 
 Route::get('/producti/{id}', function(string $id){
     return "Product ID=$id";
-});
+}) ->whereNumber("id")
+;
 
-Route::get('/productc/{category?}', function(string $catogery = null){
-    return "Prodcut Category=$category";
-});
+Route::get('/user/{username}', function(string $username){
+    return "Name=$username";
+}) ->where('username', '[a-z]+')
+;
+
+Route::get('{lang}/productc/{category?}', function(string $lang, string $category = null){
+    return "Prodcut Category=$category from Lang=$lang";
+}) ->where(['lang' => '[a-z]{2}', 'category' => '[a-z]{4,}'])
+;
