@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ShowCarController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
 
@@ -49,3 +51,7 @@ Route::controller(CarController::class) ->group(function(){
     Route::get('/car2', 'index2');
      
 });
+
+Route::get('invoke', ShowCarController::class);
+
+Route::resource('/products', ProductController::class);
