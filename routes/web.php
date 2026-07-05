@@ -9,6 +9,7 @@ use App\Http\Controllers\SumController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\StudentController;
 
 
 
@@ -20,10 +21,7 @@ use App\Http\Controllers\LayoutController;
 // );
 
 // Route::get('/', [LayoutController::class, 'index']);
-Route::get('/', function(){
-    return view('dashboard.index');
-});
-
+Route::get('/', [StudentController::class, 'index']);
 Route::get('/about', function () {
     return view('about');
 });
