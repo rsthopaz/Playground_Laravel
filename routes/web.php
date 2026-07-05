@@ -6,14 +6,16 @@ use App\Http\Controllers\ShowCarController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MotorController;
 use App\Http\Controllers\SumController;
+use App\Http\Controllers\ViewController;
+use App\Http\Controllers\HelloController;
 
 
-Route::get('/', function () {
+Route::get('/', [ViewController::class, 'index'] 
 
-    $producturl = route('product.view', ['id'=>12]);
-    dd($producturl);
-    return view('welcome');
-});
+    // $producturl = route('product.view', ['id'=>12]);
+    // dd($producturl);
+    // return view('welcome');
+);
 
 Route::get('/about', function () {
     return view('about');
@@ -68,3 +70,5 @@ Route::controller(SumController::class) -> group(function(){
     Route::get('/sumc/{num1}/{num2}', 'sum');
     Route::get('/subsc/{num1}/{num2}', 'subs');
 });
+
+Route::get('/hello', [HelloController::class, 'welcome']);
