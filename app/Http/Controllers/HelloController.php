@@ -12,6 +12,7 @@ class HelloController extends Controller
             'name' => 'Tes',
             'surname' => 'Challenge',
             'job' => '<b>What job?</b>',
+            'country' => 'id',
             'hobbies' => ['123', '345']
         ]);
     }

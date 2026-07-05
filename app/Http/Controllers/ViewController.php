@@ -10,7 +10,8 @@ class ViewController extends Controller
     public function index(){
         return view('home.index', [
         'name' => 'Thopaz',
-        'surname' => 'Rosadi'
+        'surname' => 'Rosadi',
+        'country' => 'id'
         ]);
     }
 }
