@@ -8,14 +8,21 @@ use App\Http\Controllers\MotorController;
 use App\Http\Controllers\SumController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\LayoutController;
 
 
-Route::get('/', [ViewController::class, 'index'] 
 
-    // $producturl = route('product.view', ['id'=>12]);
-    // dd($producturl);
-    // return view('welcome');
-);
+// Route::get('/', [ViewController::class, 'index'] 
+
+//     // $producturl = route('product.view', ['id'=>12]);
+//     // dd($producturl);
+//     // return view('welcome');
+// );
+
+// Route::get('/', [LayoutController::class, 'index']);
+Route::get('/', function(){
+    return view('dashboard.index');
+});
 
 Route::get('/about', function () {
     return view('about');
