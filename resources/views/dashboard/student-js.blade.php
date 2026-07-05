@@ -10,6 +10,31 @@
     <script>
         $(document).ready(function(){
             // alert();
+            $(document).on('submit', '#addStudentForm', function(e){
+                e.preventDefault();
+                let formData = new FormData(this);
+
+                $('.error-text').text('');
+                
+                $.ajax({
+                    url:"{{route ('student.store')}}",
+                    method:"post",
+                    data:formData,
+                    contentType: false,
+                    processData: false,
+                    success:function(response){
+                        $('.success_message').text(response.message);
+                        $('#addStudentModal').modal('hide');
+                        $('#addStudentModal')[0].reset();
+                    },
+                    error:function(err){
+                        let errors = err.responseJSON.errors;
+                        $.each(errors, function(key, value){
+                            $('.'+key+'_error').text(value[0]);
+                        });
+                    }
+                })
+            })
         })
 
     </script>

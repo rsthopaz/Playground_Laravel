@@ -12,17 +12,20 @@
         
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Student Name</label>
-            <input type="text" class="form-control" name="student_name" id="student_name">
+            <input type="text" class="form-control" name="name" id="name">
+            <span class="text-danger error-text name_error"></span>
           </div>
 
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Student Reg Number</label>
-            <input type="text" class="form-control" name="student_reg_number" id="student_reg_number">
+            <input type="text" class="form-control" name="reg_no" id="reg_no">
+            <span class="text-danger error-text reg_no_error"></span>
           </div>
 
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Student Profile Image</label>
-            <input type="file" class="form-control" name="student_profile_image" id="student_profile_image">
+            <input type="file" class="form-control" name="profile_image" id="profile_image">
+            <span class="text-danger error-text profile_image_error"></span>
           </div>
         
       </div>
