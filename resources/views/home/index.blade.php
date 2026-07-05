@@ -12,3 +12,14 @@
 </div>
 
 @include('shared.button', ['color' => 'brown', 'text' => 'Submit'])
+
+@php
+$cars = [1, 2, 3, 4, 5];
+@endphp
+
+@foreach($cars as $car)
+    @include('car.view', ['car' => $car])
+@endforeach
+
+@each('car.view', $cars, 'car')
+
