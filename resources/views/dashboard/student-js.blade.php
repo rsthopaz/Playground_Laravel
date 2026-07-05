@@ -9,7 +9,7 @@
 
     <script>
         $(document).ready(function(){
-            alert();
+            // alert();
         })
 
     </script>
