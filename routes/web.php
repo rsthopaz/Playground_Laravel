@@ -8,14 +8,28 @@ use App\Http\Controllers\MotorController;
 use App\Http\Controllers\SumController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\LayoutController;
+use App\Http\Controllers\StudentController;
 
 
-Route::get('/', [ViewController::class, 'index'] 
 
-    // $producturl = route('product.view', ['id'=>12]);
-    // dd($producturl);
-    // return view('welcome');
-);
+// Route::get('/', [ViewController::class, 'index'] 
+
+//     // $producturl = route('product.view', ['id'=>12]);
+//     // dd($producturl);
+//     // return view('welcome');
+// );
+
+// Route::get('/', [LayoutController::class, 'index']);
+Route::get('/', [StudentController::class, 'index']);
+
+Route::post('/store', [StudentController::class, 'store'])
+->name('student.store');
+
+Route::post('/update', [StudentController::class, 'update'])
+->name('student.update');
+
+Route::get('/fetch', [StudentController::class, 'fetch'])->name('student.fetch');
 
 Route::get('/about', function () {
     return view('about');
