@@ -9,7 +9,7 @@
       <form action="" id="editStudentForm" enctype="multipart/form-data">
             @csrf
 
-      <input type="hidden" id="edit_id">
+      <input type="hidden" name="id" id="edit_id">
       <div class="modal-body">
         
           <div class="mb-3">

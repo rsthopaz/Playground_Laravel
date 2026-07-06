@@ -22,8 +22,12 @@ use App\Http\Controllers\StudentController;
 
 // Route::get('/', [LayoutController::class, 'index']);
 Route::get('/', [StudentController::class, 'index']);
+
 Route::post('/store', [StudentController::class, 'store'])
 ->name('student.store');
+
+Route::post('/update', [StudentController::class, 'update'])
+->name('student.update');
 
 Route::get('/fetch', [StudentController::class, 'fetch'])->name('student.fetch');
 

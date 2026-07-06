@@ -46,7 +46,7 @@
 
                 $('#edit_id').val($(this).data('id'));
                 $('#edit_name').val($(this).data('name'));
-                $('#edit_reg_no').val($(this).data('reg'));
+                $('#edit_reg_no').val($(this).data('reg_no'));
 
                 $('#edit_image_preview').attr(
                     'src',
@@ -58,9 +58,40 @@
 
 
             });
-        })
 
-        function fetchStudents()
+            $(document).on('submit', '#editStudentForm', function(e){
+                e.preventDefault();
+                let formData = new FormData(this);
+
+                $('.error-text').text('');
+                
+                $.ajax({
+                    url:"{{route ('student.update')}}",
+                    method:"post",
+                    data:formData,
+                    contentType: false,
+                    processData: false,
+                    success:function(response){
+                        $('.success_message').text(response.message);
+                        $('#editStudentModal').modal('hide');
+                        $('#editStudentForm')[0].reset();
+
+                        fetchStudents();
+
+                        setTimeout(function(){
+                            $('.success_message').text('');
+                        }, 2000);
+                    },
+                    error:function(err){
+                        let errors = err.responseJSON.errors;
+                        $.each(errors, function(key, value){
+                            $('.'+key+'_error').text(value[0]);
+                        });
+                    }
+                })
+            })
+
+            function fetchStudents()
         {
         $.ajax({
             type: "get",
@@ -72,6 +103,12 @@
             }
         });
         }
+
+            
+        })
+
+
+        
         
 
     </script>

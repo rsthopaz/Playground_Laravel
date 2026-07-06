@@ -8,7 +8,7 @@
                                 <a href="javascript:void(0)" 
                                 class="btn btn-sm btn-success editBtn"
                                 data-id="{{$student->id}}"
-                                data-name="{{$student->student}}"
+                                data-name="{{$student->name}}"
                                 data-reg_no="{{$student->reg_no}}"
                                 data-image="{{$student->profile_image}}"
                                 >
