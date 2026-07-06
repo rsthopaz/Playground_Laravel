@@ -34,16 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-success"><i class="las la-edit"></i></a>
-                                <a href="" class="btn btn-sm btn-danger"><i class="las la-times"></i></a>
-                            </td>
-                            </tr>
+                           @include('dashboard.student-data')
                         </tbody>
                         </table>
                 </div>

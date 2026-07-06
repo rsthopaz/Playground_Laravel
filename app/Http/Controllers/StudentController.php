@@ -9,7 +9,8 @@ class StudentController extends Controller
 {
     //
     public function index(){
-        return view('dashboard.index');
+        $students = Student::latest()->get();
+        return view('dashboard.index', compact('students'));
     }
 
     public function store(Request $request){
@@ -35,5 +36,10 @@ class StudentController extends Controller
             'message'=>'student added succesfully'
         ]);
         
+    }
+
+    public function fetch(){
+        $students = Student::latest()->get();
+        return view('dashboard.student-data', compact('students'))->render();
     }
 }

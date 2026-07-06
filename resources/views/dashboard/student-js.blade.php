@@ -25,7 +25,13 @@
                     success:function(response){
                         $('.success_message').text(response.message);
                         $('#addStudentModal').modal('hide');
-                        $('#addStudentModal')[0].reset();
+                        $('#addStudentForm')[0].reset();
+
+                        fetchStudents();
+
+                        setTimeout(function(){
+                            $('.success_message').text('');
+                        }, 2000);
                     },
                     error:function(err){
                         let errors = err.responseJSON.errors;
@@ -36,5 +42,19 @@
                 })
             })
         })
+
+        function fetchStudents()
+        {
+        $.ajax({
+            type: "get",
+            url: "{{route('student.fetch')}}",
+            // data: "data",
+            // dataType: "dataType",
+            success: function (response) {
+                $('tbody').html(response);
+            }
+        });
+        }
+        
 
     </script>
