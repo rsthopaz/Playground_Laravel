@@ -41,6 +41,23 @@
                     }
                 })
             })
+
+            $(document).on('click', '.editBtn', function(e) {
+
+                $('#edit_id').val($(this).data('id'));
+                $('#edit_name').val($(this).data('name'));
+                $('#edit_reg_no').val($(this).data('reg'));
+
+                $('#edit_image_preview').attr(
+                    'src',
+                    '/uploads/students/' + $(this).data('image')
+                );
+
+                $('#editStudentModal').modal('show');
+                
+
+
+            });
         })
 
         function fetchStudents()
