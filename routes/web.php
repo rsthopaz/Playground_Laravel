@@ -10,6 +10,7 @@ use App\Http\Controllers\ViewController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CheckoutController;
 
 
 
@@ -22,6 +23,7 @@ use App\Http\Controllers\StudentController;
 
 // Route::get('/', [LayoutController::class, 'index']);
 Route::get('/', [StudentController::class, 'index']);
+
 
 Route::post('/store', [StudentController::class, 'store'])
 ->name('student.store');
