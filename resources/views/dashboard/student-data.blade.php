@@ -13,7 +13,10 @@
                                 data-image="{{$student->profile_image}}"
                                 >
                                     <i class="las la-edit"></i></a>
-                                <a href="" class="btn btn-sm btn-danger"><i class="las la-times"></i></a>
+                                <a href="javascript:void(0)" 
+                                class="btn btn-sm btn-danger deleteBtn"
+                                data-id="{{$student->id}}">
+                                    <i class="las la-times"></i></a>
                             </td>
                             </tr>
                             @endforeach
