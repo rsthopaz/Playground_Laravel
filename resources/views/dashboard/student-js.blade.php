@@ -146,6 +146,20 @@
             });
         });
 
+        $(document).on('keyup', '#search', function(){
+            let search = $(this).val();
+
+            $.ajax({
+                type: "get",
+                url: "{{route ('student.search')}}",
+                data: {search:search},
+                // dataType: "dataType",
+                success: function (response) {
+                    $('tbody').html(response);
+                }
+            });
+        })
+
             
         })
 

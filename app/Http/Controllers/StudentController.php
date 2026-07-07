@@ -105,4 +105,15 @@ class StudentController extends Controller
         ]);
 
     }
+
+    public function search(Request $request){
+        $search = $request->search;
+
+        $students = Student::where(function($query) use ($search){
+        $query->where('name', 'LIKE', "%{$search}%")
+        ->orWhere('reg_no', 'LIKE', "%{$search}%");
+        })->latest()->get();
+
+        return view ('dashboard.student-data', compact('students'))->render();
+    }
 }

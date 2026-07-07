@@ -32,6 +32,9 @@ Route::post('/update', [StudentController::class, 'update'])
 Route::post('/delete', [StudentController::class, 'delete'])
 ->name('student.delete');
 
+Route::get('/search', [StudentController::class, 'search'])
+->name('student.search');
+
 Route::get('/fetch', [StudentController::class, 'fetch'])->name('student.fetch');
 
 Route::get('/about', function () {
