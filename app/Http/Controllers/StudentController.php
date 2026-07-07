@@ -83,4 +83,37 @@ class StudentController extends Controller
         ]);
         
     }
+
+    public function delete(Request $request){   
+
+    $student = Student::findOrFail($request->id);
+
+    if($request->profile_image){
+            $old_path=public_path('uploads/students/' .$student->profile_image);
+            if(File::exists($old_path)){
+                File::delete($old_path);
+            }
+            $imageName = time().'.'.$request->profile_image->extension();
+            $request->profile_image->move(public_path('uploads/students'), $imageName);
+        }
+
+        $student->delete();
+
+        return response()->json([
+            'status'=>'success',
+            'message'=>'student deleted succesfully'
+        ]);
+
+    }
+
+    public function search(Request $request){
+        $search = $request->search;
+
+        $students = Student::where(function($query) use ($search){
+        $query->where('name', 'LIKE', "%{$search}%")
+        ->orWhere('reg_no', 'LIKE', "%{$search}%");
+        })->latest()->get();
+
+        return view ('dashboard.student-data', compact('students'))->render();
+    }
 }

@@ -20,7 +20,7 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal" data-bs-whatever="@mdo">Add Student</button>
                 </h2>
                 <h4 class="text-success my-4 success_message" > </h4>
-                <input type="text" name="search" class="form-control my-3" placeholder="Search by student name and reg no">
+                <input type="text" id="search" class="form-control my-3" placeholder="Search by student name and reg no">
 
                 <div class="table-data">
                     <table class="table">

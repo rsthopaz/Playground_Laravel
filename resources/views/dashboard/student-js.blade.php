@@ -1,4 +1,7 @@
 <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <script>
         $.ajaxSetup({
             headers: {
@@ -103,6 +106,59 @@
             }
         });
         }
+
+        $(document).on('click', '.deleteBtn', function(){
+            let student_id = $(this).data('id');
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+            if (result.isConfirmed){
+                 $.ajax({
+                    type: "post",
+                    url: "{{route ('student.delete')}}",
+                    data: {id:student_id},
+                    success: function (response) {
+                        Swal.fire({
+
+                title: "Deleted!",
+                text: "succesed.",
+                icon: "success"
+            });
+            fetchStudents();
+                        
+                    },
+                    error:function(err){
+                         Swal.fire({
+
+                title: "Deleted!",
+                text: "something went wrong.",
+                icon: "error"
+            });
+                    }
+                });
+            }
+            });
+        });
+
+        $(document).on('keyup', '#search', function(){
+            let search = $(this).val();
+
+            $.ajax({
+                type: "get",
+                url: "{{route ('student.search')}}",
+                data: {search:search},
+                // dataType: "dataType",
+                success: function (response) {
+                    $('tbody').html(response);
+                }
+            });
+        })
 
             
         })
